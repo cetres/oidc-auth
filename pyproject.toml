@@ -1,0 +1,47 @@
+[project]
+name = "oidc-auth"
+version = "0.1.0"
+description = "OIDC authentication and session management for FastAPI and Starlette applications."
+authors = [{ name = "Gustavo Oliveira", email = "cetres@gmail.com" }]
+dependencies = [
+    "fastapi>=0.100.0",
+    "starlette>=0.27.0",
+    "python-jose>=3.3.0",
+    "httpx>=0.24.0",
+    "PyJWT>=2.0.0",
+    "uvicorn>=0.22.0",
+    "pydantic-settings==2.12.0",
+]
+requires-python = ">=3.9"
+readme = "README.md"
+license = { file = "LICENSE" }
+keywords = ["fastapi", "oidc", "oauth2", "middleware", "authentication"]
+
+[tool.setuptools]
+packages = ["oidc_auth"]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+
+[tool.black]
+line-length = 99
+
+[tool.isort]
+profile = "black"
+line_length = 99
+known_first_party = ["oidc_auth"]
+
+[tool.mypy]
+ignore_missing_imports = true
+plugins = ["pydantic.mypy"]
+
+[tool.ruff]
+line-length = 99
+select = ["E", "F", "W", "I"] # Error, Flake8, Warnings, isort
+
+[tool.ruff.isort]
+known-first-party = ["oidc_auth"]
